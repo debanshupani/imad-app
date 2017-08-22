@@ -5,8 +5,77 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+
+var articleOne = {
+    title: 'Article One | Debanshu Pani',
+    heading: 'Article One',
+    date: 'August 22 2017',
+    content: `
+                <p>
+                    Yeah Please support thanks
+                </p>
+                <p>
+                    Yeah and also donate thanks
+                </p>
+                <p>
+                    The button is below thanks
+                </p>
+                <p>
+                    Please be quick, kids are starving and need food
+                </p>
+                <p>
+                    And you know food comes from money 
+                </p>
+                <p>
+                    And the money comes from youuuu!!!
+                </p>
+                <p>
+                    Button Below thanks
+                </p>`
+};
+
+function createTemplate (data) {
+    var title = data.title
+    var date = data.date
+    var heading = data.heading 
+    var content = data.content
+    var htmlTemplate 
+    <html>
+        <head>
+            <title>
+               ${title}
+            </title>
+            <link href="/ui/style.css" rel="stylesheet" />
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        </head>
+        <body>
+            <div class="container">
+                 <div>
+                    <a href="/">Home</a>
+                </div>
+                <hr/>
+                <h3>
+                    ${heading}
+                </h3>
+                <div>
+                    ${date}
+                </div>
+                <div>
+                    ${content}
+                    <div>
+                       <button onclick="location.href='http://panidebanshu.imad.hasura-app.io/article-two'" type="button">
+                                 Pay Here
+                       </button>
+                </div>
+            </div>
+            </div>
+        </body>
+    </html>
+    `;
+    return htmlTemplate;
+}
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.send(createTemplate(articleOne));
 });
 
 app.get('/article-one', function(req, res) {

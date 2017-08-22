@@ -34,6 +34,11 @@ var articles = {
                 <p>
                     Button Below thanks
                 </p>
+                <div>
+                   <button onclick="location.href='http://panidebanshu.imad.hasura-app.io/article-two'" type="button">
+                             Pay Here
+                   </button>
+            </div>
         </div>`
 },
     'article-two': {

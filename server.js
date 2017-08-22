@@ -6,12 +6,14 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articleOne = {
+var articles = {
+    'article-one': {
     title: 'Article One | Debanshu Pani',
     heading: 'Article One',
     date: 'August 22 2017',
     content: `
-                <p>
+               <div>
+                 <p>
                     Yeah Please support thanks
                 </p>
                 <p>
@@ -31,7 +33,65 @@ var articleOne = {
                 </p>
                 <p>
                     Button Below thanks
-                </p>`
+                </p>
+                <div>
+                   <button onclick="location.href='http://panidebanshu.imad.hasura-app.io/article-two'" type="button">
+                             Pay Here
+                   </button>
+            </div>
+        </div>`
+},
+    'article-two': {
+        title: 'Article Two | Debanshu Pani',
+        heading: 'Article Two',
+        date: 'August 22 2017',
+        content: `
+        <div class="container">
+            <div>
+                 <a href="/">Home</a>
+            </div>
+            <hr/>
+            <h3>
+                Article Two 
+            </h3>
+            <div>
+                August 22 2017
+            </div>
+            <div>
+                <p>
+                    <h2>
+                        We thank you for your concern :) no paypal lol pls mail cash
+                    </h2>
+            </div>
+            <div>
+                <h4> 
+                Surprise Surprise it's not done yet. Click more  to find out 
+                </h4>
+                <hr/>
+                 <button onclick="location.href='http://panidebanshu.imad.hasura-app.io/article-three'" type="button">
+                            More
+                   </button>
+            </div>
+        </div>`
+},
+    'article-three': {
+         title: 'Article Three | Debanshu Pani',
+         heading: 'Article Three',
+         date: 'August 22 2017',
+         content: `
+          <div>
+                <h2>
+                    Thanks for sticking around till here fam :)
+                </h2>
+                <br>
+                <h2>
+                    So here's Linus' new video 
+                </h2>
+             </div>
+             <div>
+                  <iframe width="854" height="480" src="https://www.youtube.com/embed/vKc8GI_V-BM" frameborder="0" allowfullscreen></iframe>
+             </div>`
+    }
 };
 
 function createTemplate (data) {
@@ -76,11 +136,12 @@ function createTemplate (data) {
     return htmlTemplate;
 }
 app.get('/', function (req, res) {
-  res.send(createTemplate(articleOne));
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function(req, res) {
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+app.get('/:articleName', function(req, res) {
+    var articleName = req.params.articleName;
+    res.send(createTemplate(articles[articlename]));
 });
 
 app.get('/article-two', function(req, res) {

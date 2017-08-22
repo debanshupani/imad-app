@@ -46,33 +46,33 @@ var articles = {
         heading: 'Article Two',
         date: 'August 22 2017',
         content: `
-        <div class="container">
-            <div>
-                 <a href="/">Home</a>
-            </div>
-            <hr/>
-            <h3>
-                Article Two 
-            </h3>
-            <div>
-                August 22 2017
-            </div>
-            <div>
-                <p>
-                    <h2>
-                        We thank you for your concern :) no paypal lol pls mail cash
-                    </h2>
-            </div>
-            <div>
-                <h4> 
-                Surprise Surprise it's not done yet. Click more  to find out 
-                </h4>
-                <hr/>
-                 <button onclick="location.href='http://panidebanshu.imad.hasura-app.io/article-three'" type="button">
-                            More
-                   </button>
-            </div>
-        </div>`
+                <div class="container">
+                    <div>
+                         <a href="/">Home</a>
+                    </div>
+                    <hr/>
+                    <h3>
+                        Article Two 
+                    </h3>
+                    <div>
+                        August 22 2017
+                    </div>
+                    <div>
+                        <p>
+                            <h2>
+                                We thank you for your concern :) no paypal lol pls mail cash
+                            </h2>
+                    </div>
+                    <div>
+                        <h4> 
+                        Surprise Surprise it's not done yet. Click more  to find out 
+                        </h4>
+                        <hr/>
+                         <button onclick="location.href='http://panidebanshu.imad.hasura-app.io/article-three'" type="button">
+                                    More
+                           </button>
+                    </div>
+                </div>`
 },
     'article-three': {
          title: 'Article Three | Debanshu Pani',
@@ -142,14 +142,6 @@ app.get('/', function (req, res) {
 app.get('/:articleName', function(req, res) {
     var articleName = req.params.articleName;
     res.send(createTemplate(articles[articlename]));
-});
-
-app.get('/article-two', function(req, res) {
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three', function(req, res) {
-   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
 });
  
 app.get('/ui/style.css', function (req, res) {

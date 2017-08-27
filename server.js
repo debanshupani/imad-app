@@ -113,9 +113,6 @@ function createTemplate (data) {
                 <div>
                     ${content}
                     <div>
-                       <button onclick="location.href='http://panidebanshu.imad.hasura-app.io/article-two'" type="button">
-                                 Pay Here
-                       </button>
                 </div>
             </div>
             </div>

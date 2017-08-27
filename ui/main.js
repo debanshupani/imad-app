@@ -1,9 +1,8 @@
 var button = document.getElementById('counter');
 var counter = 0;
 
-window.addEventListener('load', 
-  function () {
+window.onload = function () {
     counter++;
     var span = document.getElementById('count');
     span.innerHTML = counter.toString();
-});  
+};  
